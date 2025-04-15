@@ -112,19 +112,12 @@
             var routeStations = routeData.routes.find(r => r.name == route)['stations'];
 
             routeStations.forEach(function(stationID) {
-                //console.log(mtrStationsData.find(r => r["\ufeffStationID"] == stationID));
                 stationName.push({
                     value: stationID,
                     text: mtrStationsData.find(r => r["\ufeffStationID"] == stationID)['NameChi'],
                 });
             })
             console.log(routeStations);
-            /*     stationName.push({
-                        value: element["NameEng"],
-                        text: element["NameChi"],
-                    });
-                
-            }); */
             jQuery("#stations").empty();
             jQuery("#stations").append(
                 jQuery("<option>").text("Please Select")
@@ -190,8 +183,6 @@
                         var routeRow = $("<div>", {
                             class: "row g-1 g-sm-1 g-md-2 g-lg-3 align-items-center"
                         });
-                        //console.log(route);
-                        //console.log(routeData.routes.find(r => r.name == route["route_no"])['color']);
                         routeRow.append($("<div>", {
                             class: "col-2 col-sm-2 col-md-2 col-lg-2 text-center"
                         }).html($("<p>", {
@@ -223,21 +214,15 @@
                             });
                             minRow.append($("<span>", {
                                 class: "col text-end fs-2"
-                            }).css({
-                                //"font-size": "1.2rem"
-                            }).append(route['time_ch'].replace("分鐘", "")));
+                            }).css({}).append(route['time_ch'].replace("分鐘", "")));
 
                             minRow.append($("<p>", {
                                 class: "col fs-6"
-                            }).css({
-                                //'font-size': '0.6rem'
-                            }).append("分鐘<br>Min"));
+                            }).css({}).append("分鐘<br>Min"));
                         } else {
                             var minRow = $("<p>", {
                                 class: "m-0 text-end fs-4"
-                            }).css({
-                                //"font-size": "1.5rem"
-                            }).append(route['time_ch']);
+                            }).css({}).append(route['time_ch']);
                         }
                         routeRow.append($("<div>", {
                             class: "col-3 col-sm-3 col-md-3 col-lg-2 "
