@@ -1,20 +1,30 @@
-<head>
-  <title>LRT</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta charset="utf-8" />
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-  <script src="js/bootstrap.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>LRT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <script src="js/bootstrap.min.js"></script>
 
-  <script src="js/jquery-3.7.1.min.js"></script>
-</head>
+    <script src="js/jquery-3.7.1.min.js"></script>
+  </head>
 
-<body>
-  <div class="container p-3">
-    <h1 class="display-3">輕鐵月台資訊顯示</h1>
-    <div id="mtr_time"></div>
-  </div>
-</body>
+  <body>
+    <div class="container p-3">
+      <h1 class="display-3">輕鐵月台資訊顯示</h1>
+      <div id="mtr_time"></div>
+    </div>
+  </body>
+</html>
 <script>
+  if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    $("html").attr("data-bs-theme", "dark");
+  }
+
   async function loadCSV(url) {
     try {
       const response = await fetch(url);
@@ -198,7 +208,7 @@
                   class: "col-2 col-sm-2 col-md-2 col-lg-2 text-center",
                 }).html(
                   $("<p>", {
-                    class: "m-0 fs-5  fw-semibold",
+                    class: "m-0 fs-5  fw-semibold bg-white text-black",
                   })
                     .css({
                       width: "3em",
@@ -248,8 +258,8 @@
                   class: "row g-2",
                 });
                 minRow.append(
-                  $("<span>", {
-                    class: "col text-end fs-2",
+                  $("<p>", {
+                    class: "col text-end fw-bold fs-3 m-0",
                   })
                     .css({})
                     .append(route["time_ch"].replace("分鐘", ""))
@@ -257,7 +267,7 @@
 
                 minRow.append(
                   $("<p>", {
-                    class: "col fs-6",
+                    class: "col fs-6 lh-1",
                   })
                     .css({})
                     .append("分鐘<br>Min")
